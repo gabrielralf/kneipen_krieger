@@ -6,7 +6,7 @@ User können sich registrieren, Preise eintragen, vergleichen und so eine **Comm
 
 ---
 
-## 🚀 Features
+## Features
 - **User-Login via Supabase Auth** (E-Mail/Passwort)
 - **Standorterkennung** und **Kartenintegration** (Google Maps SDK)
 - **Drinks-, Bars- und Preis-Datenbank** mit relationalem Schema
@@ -14,7 +14,7 @@ User können sich registrieren, Preise eintragen, vergleichen und so eine **Comm
 
 ---
 
-## 🧠 Tech Stack
+## Tech Stack
 | Bereich               | Technologie                             |
 |-----------------------|-----------------------------------------|
 | **Frontend**          | Flutter (Dart, Android Studio)          |
