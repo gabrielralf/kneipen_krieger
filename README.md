@@ -1,16 +1,23 @@
-# kneipen_krieger
+# 🍺 KneipenKrieger
 
-A new Flutter project.
+**KneipenKrieger** ist eine Flutter-basierte App, mit der Nutzer:innen die **günstigsten Drinks in ihrer Umgebung** finden können.  
+Die Anwendung nutzt **Supabase** als Backend (PostgreSQL, Authentifizierung, Realtime) und **Google Maps** zur Anzeige von Bars in der Nähe.  
+User können sich registrieren, Preise eintragen, vergleichen und so eine **Community-getriebene Preisdatenbank** aufbauen.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🚀 Features
+- **User-Login via Supabase Auth** (E-Mail/Passwort)
+- **Standorterkennung** und **Kartenintegration** (Google Maps SDK)
+- **Drinks-, Bars- und Preis-Datenbank** mit relationalem Schema
+- **Community-gestützte Preisupdates** in Echtzeit
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🧠 Tech Stack
+| Bereich               | Technologie                             |
+|-----------------------|-----------------------------------------|
+| **Frontend**          | Flutter (Dart, Android Studio)          |
+| **Backend**           | Supabase (PostgreSQL + Auth + Realtime) |
+| **Location Services** | Google Maps SDK, Geolocator             |
+| **Deployment**        | Android / iOS                           |
