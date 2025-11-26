@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 // Supabase SDK importieren (neu hinzugefügt)
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'pages/map_screen.dart';
 
 // Der Einstiegspunkt deiner App.
 // Hier wird Supabase initialisiert, bevor runApp() aufgerufen wird.
@@ -11,7 +12,7 @@ Future<void> main() async {
 
   // Supabase-Initialisierung:
   await Supabase.initialize(
-    url: 'https://lwkkmguwoqrtazwemdaq.supabase.co', // <- deine Supabase-Projekt-URL
+    url: 'https://lwkkmguwoqrtazwemdaq.supabase.co', // Supabase-Projekt-URL
     anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3a2ttZ3V3b3FydGF6d2VtZGFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIzMzU4NTYsImV4cCI6MjA3NzkxMTg1Nn0.HrlZtiJfVrD8eQ55Rmy8qBqw3GmVFq431bFyLBaBWew',);
 
   runApp(const MyApp());
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'KneipenKrieger',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MapScreen(),
     );
   }
 }
