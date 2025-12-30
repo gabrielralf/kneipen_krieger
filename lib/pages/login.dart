@@ -43,8 +43,6 @@ class _LoginPageState extends State<LoginPage> {
 
     setState(() => _isLoading = true);
     try {
-      // Supabase sign-in expects an email. If you're using usernames, you’ll need
-      // a lookup step (e.g., query your users table to map username -> email).
       await AuthDb().signIn(email: emailOrUsername, password: password);
 
       if (!mounted) return;
@@ -156,7 +154,7 @@ class _LoginPageState extends State<LoginPage> {
               // Username
               InputField(
                 controller: usernameController,
-                hintText: 'Username',
+                hintText: 'E-mail',
                 obscureText: false,
               ),
 
@@ -181,6 +179,7 @@ class _LoginPageState extends State<LoginPage> {
 
               const SizedBox(height: 10),
 
+                //Register Button
               MyButton(
                 onTap: _isLoading ? null : _goToRegister,
                 text: 'Register',
