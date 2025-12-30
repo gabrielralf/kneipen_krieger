@@ -8,23 +8,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:kneipen_krieger/main.dart';
+import 'package:kneipen_krieger/pages/login.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('Shows login screen', (WidgetTester tester) async {
+    await tester.pumpWidget(const MaterialApp(home: LoginPage()));
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    expect(find.text('Willkommen!'), findsOneWidget);
+    expect(find.text('Sign In'), findsOneWidget);
+    expect(find.text('Register'), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    bool isAssetImage(Widget w, String assetName) {
+      return w is Image &&
+          w.image is AssetImage &&
+          (w.image as AssetImage).assetName == assetName;
+    }
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(
+      find.byWidgetPredicate((w) => isAssetImage(w, 'lib/images/google_logo.png')),
+      findsOneWidget,
+    );
+    expect(
+      find.byWidgetPredicate((w) => isAssetImage(w, 'lib/images/github-mark.png')),
+      findsOneWidget,
+    );
+    expect(find.byType(TextField), findsNWidgets(2));
   });
 }
