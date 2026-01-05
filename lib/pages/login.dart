@@ -3,7 +3,6 @@ import 'package:kneipen_krieger/components/input_fields.dart';
 import 'package:kneipen_krieger/components/my_button.dart';
 
 import '../components/auth_db.dart';
-import 'home.dart';
 import 'register.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -44,11 +43,6 @@ class _LoginPageState extends State<LoginPage> {
     setState(() => _isLoading = true);
     try {
       await AuthDb().signIn(email: emailOrUsername, password: password);
-
-      if (!mounted) return;
-      await Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => const HomePage()),
-      );
     } catch (e) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
@@ -133,9 +127,9 @@ class _LoginPageState extends State<LoginPage> {
 
               // Logo
               Image.asset(
-                'lib/images/logo.png',
-                width: 120,
-                height: 120,
+                'lib/images/logo2.png',
+                width: 240,
+                height: 240,
                 fit: BoxFit.contain,
               ),
 
