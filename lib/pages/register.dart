@@ -3,7 +3,6 @@ import 'package:kneipen_krieger/components/input_fields.dart';
 import 'package:kneipen_krieger/components/my_button.dart';
 
 import '../components/auth_db.dart';
-import 'home.dart';
 
 class RegisterPage extends StatefulWidget {
 	const RegisterPage({super.key});
@@ -107,10 +106,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
 			// Note: Depending on your Supabase settings, email confirmation may be
 			// required before the session becomes active.
-			await Navigator.of(context).pushAndRemoveUntil(
-				MaterialPageRoute(builder: (_) => const HomePage()),
-				(route) => false,
-			);
+			Navigator.of(context).popUntil((route) => route.isFirst);
 		} catch (e) {
 			if (!mounted) return;
 			ScaffoldMessenger.of(context).showSnackBar(

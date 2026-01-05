@@ -51,7 +51,10 @@ dev_dependencies:
 
 flutter_launcher_icons:
   android: true
-  image_path: "lib/images/icon.png"
+  ios: false
+  image_path: "lib/images/icon2.png"
+  adaptive_icon_foreground: "lib/images/icon2.png"
+  adaptive_icon_background: "#F3C25C"
 
 # The following section is specific to Flutter packages.
 flutter:
