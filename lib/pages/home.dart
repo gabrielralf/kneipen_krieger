@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
         body: IndexedStack(
           index: _navIndex,
           children: [
-            const PriceSuggestionPage(),
+            PriceSuggestionPage(),
             _MapTab(
               cameraPosition: _kMannheim,
               onMapCreated: (controller) => mapController = controller,

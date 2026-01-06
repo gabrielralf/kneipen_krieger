@@ -38,6 +38,7 @@ dependencies:
   flutter_dotenv: ^6.0.0
   google_maps_flutter: ^2.14.0
   flutter_svg: ^2.2.3  # für SVG-Icons
+  image_picker: ^1.1.2
 
 
 dev_dependencies:

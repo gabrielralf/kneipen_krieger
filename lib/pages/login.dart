@@ -136,7 +136,7 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 50),
 
               const Text(
-                'Willkommen!',
+                'Welcome!',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 16,
