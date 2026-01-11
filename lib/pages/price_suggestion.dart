@@ -8,7 +8,9 @@ import '../components/input_fields.dart';
 import '../components/my_button.dart';
 
 class PriceSuggestionPage extends StatefulWidget {
-  const PriceSuggestionPage({super.key});
+  const PriceSuggestionPage({super.key, this.onPosted});
+
+  final VoidCallback? onPosted;
 
   @override
   State<PriceSuggestionPage> createState() => _PriceSuggestionPageState();
@@ -123,6 +125,8 @@ class _PriceSuggestionPageState extends State<PriceSuggestionPage> {
         'photo_path': storagePath,
         'photo_url': publicUrl,
       });
+
+      widget.onPosted?.call();
 
       if (!mounted) return;
       ScaffoldMessenger.of(

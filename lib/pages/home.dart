@@ -18,6 +18,7 @@ class _HomePageState extends State<HomePage> {
 
   int _navIndex = 1;
   final List<int> _navHistory = [1];
+  int _suggestionsRefreshSignal = 0;
 
   static const CameraPosition _kMannheim = CameraPosition(
     target: LatLng(49.4875, 8.4660), // Mannheim, Deutschland
@@ -55,12 +56,14 @@ class _HomePageState extends State<HomePage> {
         body: IndexedStack(
           index: _navIndex,
           children: [
-            PriceSuggestionPage(),
+            PriceSuggestionPage(
+              onPosted: () => setState(() => _suggestionsRefreshSignal++),
+            ),
             _MapTab(
               cameraPosition: _kMannheim,
               onMapCreated: (controller) => mapController = controller,
             ),
-            const ProfilePage(),
+            ProfilePage(refreshSignal: _suggestionsRefreshSignal),
           ],
         ),
       ),
