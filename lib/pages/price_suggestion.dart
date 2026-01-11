@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 
 import 'package:image_picker/image_picker.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../components/input_fields.dart';
@@ -99,6 +100,22 @@ class _PriceSuggestionPageState extends State<PriceSuggestionPage> {
       }
 
       final photo = _photo!;
+
+      // Geocode so the map can place a marker for this bar.
+      // For now we default to Mannheim since the UI doesn't ask for a city yet.
+      double? lat;
+      double? lng;
+      try {
+        final query = '$streetName $streetNumber, Mannheim, Deutschland';
+        final locations = await locationFromAddress(query);
+        if (locations.isNotEmpty) {
+          lat = locations.first.latitude;
+          lng = locations.first.longitude;
+        }
+      } catch (_) {
+        // Keep nullable; insert still works, marker will be skipped.
+      }
+
       final bytes = await photo.readAsBytes();
       final fileName = photo.name;
       final ext = (fileName.contains('.') ? fileName.split('.').last : 'jpg')
@@ -122,6 +139,8 @@ class _PriceSuggestionPageState extends State<PriceSuggestionPage> {
         'street_name': streetName,
         'street_number': streetNumber,
         'price': _price,
+        'lat': lat,
+        'lng': lng,
         'photo_path': storagePath,
         'photo_url': publicUrl,
       });
@@ -188,7 +207,7 @@ class _PriceSuggestionPageState extends State<PriceSuggestionPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25),
                 child: DropdownButtonFormField<String>(
-                  value: _drinkType,
+                  initialValue: _drinkType,
                   decoration: _dropdownDecoration('Drink type'),
                   items: const [
                     DropdownMenuItem(value: 'beer', child: Text('beer')),
